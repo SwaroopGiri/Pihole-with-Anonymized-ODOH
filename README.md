@@ -4,6 +4,7 @@
 **Important Information**
 
 This tutorial assumes that you have a Raspberry Pi setup with Rasberry Pi OS and Pi-hole cofigured on it.
+This tutorial is an alternative to unbound and both can't be used simultaneously. If you want to use anonymoity and encryption capabilities of DNSCrypt, follow this tutorial. If you like recursive self contained DNS resolution, you should stick to unbound.
 
 ***
 **Additional Information**
@@ -57,10 +58,51 @@ Scroll down to the bottom of the TOML file. For **server_name** add the same ser
 
 ```
 routes = [
-     { server_name='cloudflare', via=['anon-cs-de2', 'anon-cs-nl'] },
+     { server_name='odoh-cloudflare', via=['odohrelay-crypto-sx', 'odohrelay-surf'] },
+ ]
+ routes = [
+     { server_name='odohrelay-koki-ams', via=['odohrelay-koki-ams', 'odohrelay-koki-bcn'] },
  ]
 ```
+
 Save the configuration file and exit nano.
 ```
 CTRL + X then Y and Enter
 ```
+
+Now we need to start the service and test it to make sure it's working before we configure Pi-Hole to use it.
+```
+sudo ./dnscrypt-proxy -service install
+sudo ./dnscrypt-proxy
+sudo ./dnscrypt-proxy -service start
+sudo systemctl status dnscrypt-proxy
+```
+
+The **sudo ./dnscrypt-proxy** command will provide detailed startup information and return any errors it encounters.  **sudo systemctl status dnscrypt-proxy** does the same for DNScrypt when it's started as a service. Both should have the same output, as shown below. If the Anonymized setting is properly configured those relay servers will be shown in the DNSCrypt output.
+
+To run a quick test that DNSCrypt can perform name resolution type:
+
+```
+./dnscrypt-proxy -resolve www.google.com
+```
+
+### Configuring Pi-Hole to use DNSCrypt as resolver
+
+Login to Pi-hole web interface, Goto settings --> DNS --> Select Custom 1 (IPv4) and Type the DNSCrypt-proxy listening IP 127.0.0.1#5350 below it.
+
+Uncheck everything else in Upstream DNS Servers section.
+
+Make sure "Never forward reverse lookups for private IP ranges" and "Never forward non-FQDNs" is checked in Advanced DNS section. Uncheck use DNSSEC option since DNSCrypt does that for us.
+
+Only check "Listen on all interfaces, permit all origins" in 'Interface listening behavior' section if you're planning to setup a VPN server. For all other connections in local network, only selecting "Listen on all interfaces" should suffice.
+
+Click save.
+
+Lastly, Reboot Pi `sudo reboot`
+
+
+Our Pi-Hole will now send all DNS requests to ODoH servers over an encrypted tunnel.
+
+We can test this to check our work. Start with https://www.dnsleaktest.com/ --> it will tell us right away. You may see more than one DNS server listed and as long as your ISP isn't shown, you were successful!
+
+Happy Adblocking :)
