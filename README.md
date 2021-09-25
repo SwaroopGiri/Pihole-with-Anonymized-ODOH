@@ -35,13 +35,14 @@ sudo nano dnscrypt-proxy.toml
 ```
 Under Global settings add one or more servers. You can find list of available servers in dnscrypt [repo](https://github.com/dnscrypt/dnscrypt-resolvers). For example, you can search for DNS servers that block ads, support doh (DNS over HTTPS), view locations, etc. V3 is the most recently updated list, hence, we will be using V3 ODOH [server list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md) and pairing servers with [relay list](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md) to anonymize the queries. You can also check out the public DNSCrypt server list and pick one or more that fits your requirements. 
 
+```
+server_names = ['odoh-cloudflare' , 'odohrelay-koki-ams']
+```
+
 **Note**
 
 ODOH servers can only be paired with ODOH Relays. Attempting to pair DoH servers with ODoH Relays or vice versa won't work.
 
-```
-server_names = ['odoh-cloudflare' , 'odohrelay-koki-ams']
-```
 Under List of Local addresses change the port number to something you like, anything above 1024. We'll be using 5350 in this example. Port 53 (standard for DNS) will be reserved for Pihole and hence, we must use a different custom port number for DNSCrypt.
 
 ```
