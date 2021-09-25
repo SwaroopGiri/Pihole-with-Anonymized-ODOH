@@ -1,4 +1,4 @@
-# How To Pihole-with-DNSCrypt-Anonymized-ODOH on Raspberry Pi 4
+# How To Pihole-over-Anonymized-ODOH with DNSCrypt on Raspberry Pi 4
  
 ***
 **Important Information**
