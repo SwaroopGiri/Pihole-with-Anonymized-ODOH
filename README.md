@@ -9,7 +9,7 @@ This tutorial is an alternative to unbound and both can't be used simultaneously
 ***
 **Additional Information**
 
-Oblivious DNS (ODNS) is a new design of the DNS ecosystem that allows current DNS servers to remain unchanged and increases privacy for data in motion and at rest. In the ODNS system, both the client is modified with a local resolver, and there is a new authoritative name server for .odns.
+**Oblivious DNS (ODNS)** is a new design of the DNS ecosystem that allows current DNS servers to remain unchanged and increases privacy for data in motion and at rest. In the ODNS system, both the client is modified with a local resolver, and there is a new authoritative name server for .odns.
 
 **dnscrypt-proxy** is a flexible DNS proxy. It runs on your computer or router, and can locally block unwanted content, reveal where your devices are silently sending data to, make applications feel faster by caching DNS responses, and improve security and confidentiality by communicating to upstream DNS servers over secure channels.
 
@@ -42,7 +42,7 @@ ODOH servers can only be paired with ODOH Relays. Attempting to pair DoH servers
 ```
 server_names = ['odoh-cloudflare' , 'odohrelay-koki-ams']
 ```
-Under List of Local addresses change the port number to something you like, above 1024. We'll be using 5350 in this example. Port 53 (standard for DNS) will be reserved for Pihole and hence, we must use a different custom port number for DNSCrypt.
+Under List of Local addresses change the port number to something you like, anything above 1024. We'll be using 5350 in this example. Port 53 (standard for DNS) will be reserved for Pihole and hence, we must use a different custom port number for DNSCrypt.
 
 ```
 listen_addresses = ['127.0.0.1:5350', '[::1]:5350']
@@ -103,6 +103,6 @@ Lastly, Reboot Pi `sudo reboot`
 
 Our Pi-Hole will now send all DNS requests to ODoH servers over an encrypted tunnel.
 
-We can test this to check our work. Start with https://www.dnsleaktest.com/ --> it will tell us right away. You may see more than one DNS server listed and as long as your ISP isn't shown, you were successful!
+We can test this to check our work. Start with https://www.dnsleaktest.com/ --> it will tell us right away. You may see more than one DNS server listed and as long as your ISP isn't listed, you were successful!
 
 Happy Adblocking :)
