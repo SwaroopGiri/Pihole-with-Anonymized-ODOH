@@ -3,9 +3,9 @@
 ***
 **Important Information**
 
-This tutorial assumes that you have a Raspberry Pi setup with Rasberry Pi OS and Pi-hole cofigured on it. If you don't know what it is, [hop here](https://github.com/SwaroopGiri/Pi_hole_configuration) to know how to set it up.
+This tutorial assumes that you have a Raspberry Pi setup with Rasberry Pi OS and Pi-hole configured on it. If you don't know what it is, [hop here](https://github.com/SwaroopGiri/Pi_hole_configuration) to know how to set it up.
 
-DNSCrypt is an alternative to unbound and both can't be used simultaneously. If you want to use anonymoity and encryption capabilities of DNSCrypt, follow this tutorial. If you like recursive self contained DNS resolution, you should stick to unbound.
+**DNSCrypt** is an alternative to unbound and both can't be used simultaneously. If you want to use anonymoity and encryption capabilities of DNSCrypt, follow this tutorial. If you like recursive self contained DNS resolution, you should stick to unbound.
 
 ***
 **Additional Information**
