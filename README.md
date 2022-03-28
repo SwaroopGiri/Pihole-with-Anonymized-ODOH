@@ -56,7 +56,23 @@ require_dnssec = true
 require_nofilter = false
 cache = false   (we will use the Pi-Hole cache)
 ```
-Scroll down to the bottom of the TOML file. For **server_name** add the same server name you used above. For the 'via' servers, review the relay list <a href="https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md">here</a>, and pick a couple that suite your needs. It is usually recommended to use relays nearest to your location for quick resolutiom but you can use servers in a different country or have other unique requirements. 
+Make sure to uncomment the type of servers and relays you'll be using under [sources] section. For example, I'll be using odoh servers and relays in my example, so I'll uncomment below lines.
+
+```
+[sources.odoh-servers]
+   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-servers.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-servers.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-servers.md']
+   cache_file = 'odoh-servers.md'
+   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+   refresh_delay = 24
+   prefix = ''
+[sources.odoh-relays]
+   urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/odoh-relays.md', 'https://download.dnscrypt.info/resolvers-list/v3/odoh-relays.md', 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/odoh-relays.md']
+   cache_file = 'odoh-relays.md'
+   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
+   refresh_delay = 24
+   prefix = ''
+```
+Scroll down to the bottom of the TOML file. For **server_name** add the same server name you used above. For the 'via' servers, review the relay list <a href="https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md">here</a>, and pick a couple that suite your needs. It is usually recommended to use relays nearest to your location for quick resolution but you can use servers in a different country or have other unique requirements.
 
 ```
 routes = [
