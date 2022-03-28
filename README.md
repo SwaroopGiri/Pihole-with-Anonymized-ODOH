@@ -5,14 +5,14 @@
 
 This tutorial assumes that you have a Raspberry Pi setup with Rasberry Pi OS and Pi-hole configured on it. If you don't know what it is, [hop here](https://github.com/SwaroopGiri/Pi_hole_configuration) to know how to set it up.
 
-**DNSCrypt** is an alternative to unbound and both can't be used simultaneously. If you want to use anonymoity and encryption capabilities of DNSCrypt, follow this tutorial. If you like recursive self contained DNS resolution, you should stick to unbound.
+**DNSCrypt** is an alternative to unbound and both can't be used simultaneously. If you want to use anonymity and encryption capabilities of DNSCrypt, follow this tutorial. If you like recursive self contained DNS resolution, you should stick to unbound.
 
 ***
 **Additional Information**
 
-**Oblivious DNS (ODNS)** is a new design of the DNS ecosystem that allows current DNS servers to remain unchanged and increases privacy for data in motion and at rest. In the ODNS system, both the client is modified with a local resolver, and there is a new authoritative name server for .odns.
+**Oblivious DNS (ODNS)** is a new design of the DNS ecosystem that allows current DNS servers to remain unchanged and increases privacy for data in motion and at rest. In the ODNS system, both the client is modified with a local resolver and there is a new authoritative name server for .odns.
 
-**dnscrypt-proxy** is a flexible DNS proxy. It runs on your computer or router, and can locally block unwanted content, reveal where your devices are silently sending data to, make applications feel faster by caching DNS responses, and improve security and confidentiality by communicating to upstream DNS servers over secure channels.
+**dnscrypt-proxy** is a flexible DNS proxy. It runs on your computer or router and can locally block unwanted content, reveal where your devices are silently sending data to, make applications feel faster by caching DNS responses, and improve security and confidentiality by communicating to upstream DNS servers over secure channels.
 
 **Anonymized DNS** is a lightweight alternative to Tor and SOCKS proxies, dedicated to DNS traffic. They hide the client IP address to DNS resolvers, providing anonymity in addition to confidentiality and integrity.
 
