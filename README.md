@@ -49,13 +49,17 @@ Under List of Local addresses change the port number to something you like, anyt
 ```
 listen_addresses = ['127.0.0.1:5350', '[::1]:5350']
 ```
-
+Uncomment the line 
+```
+#odoh_servers = true
+```
 Change the following:
 ```
 require_dnssec = true   
 require_nofilter = false
 cache = false   (we will use the Pi-Hole cache)
 ```
+
 Make sure to uncomment the type of servers and relays you'll be using under [sources] section. For example, I'll be using odoh servers and relays in my example, so I'll uncomment below lines.
 
 ```
@@ -77,9 +81,7 @@ Scroll down to the bottom of the TOML file. For **server_name** add the same ser
 ```
 routes = [
      { server_name='odoh-cloudflare', via=['odohrelay-crypto-sx', 'odohrelay-surf'] },
- ]
- routes = [
-     { server_name='odohrelay-koki-ams', via=['odohrelay-koki-ams', 'odohrelay-koki-bcn'] },
+     { server_name='odohrelay-koki-ams', via=['odohrelay-koki-ams', 'odohrelay-koki-bcn'] }
  ]
 ```
 
