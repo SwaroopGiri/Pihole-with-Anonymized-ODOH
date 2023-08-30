@@ -76,7 +76,7 @@ Make sure to uncomment the type of servers and relays you'll be using under [sou
    refresh_delay = 24
    prefix = ''
 ```
-Scroll down to the bottom of the TOML file. For **server_name** add the same server name you used above. For the 'via' servers, review the relay list <a href="https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md">here</a>, and pick a couple that suite your needs. It is usually recommended to use relays nearest to your location for quick resolution but you can use servers in a different country or have other unique requirements.
+Scroll down to the bottom of the TOML file. Uncomment below lines under `Anonymized DNS` section. For **server_name** add the same server name you used above. For the 'via' servers, review the relay list <a href="https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md">here</a>, and pick a couple that suite your needs. It is usually recommended to use relays nearest to your location for quick resolution but you can use servers in a different country or have other unique requirements.
 
 ```
 routes = [
