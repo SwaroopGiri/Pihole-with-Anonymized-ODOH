@@ -57,7 +57,7 @@ Change the following:
 ```
 require_dnssec = true   
 require_nofilter = false
-cache = false   (we will use the Pi-Hole cache)
+cache = false   #we will use the Pi-Hole cache
 ```
 
 Make sure to uncomment the type of servers and relays you'll be using under [sources] section. For example, I'll be using odoh servers and relays in my example, so I'll uncomment below lines.
